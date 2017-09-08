@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+</head>
+
+<body ng-app="starter">
+  <ion-pane ng-controller="cartList">
+    <ion-header-bar class="bar-stable">
+      <span><i class="icon ion-location"></i></span>
+      <button class="button pull-right" ng-if="!toEdit" ng-click="editFunc()">编辑</button>
+      <button class="button pull-right" ng-if="toEdit" ng-click="okFunc()">完成</button>
+    </ion-header-bar>
+    <ion-content class="container">
+      <div class="cart-empty" ng-hide="goodsChecked.length>0">
+        <p><i class="icon ion-ios-information-outline"></i> 您的购物车里还没有商品</p>
+        <div><button class="button">个人中心</button><button class="button">立即逛逛</button></div>
+      </div>
+      <div class="cart-wrap" ng-if="goodsChecked.length">
+        <p class="checkbox-all store-info">
+          <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">JD京东自营</label>
+        </p>
+        <div class="cart-list">
+          <div class="promotion-info">
+            <p><span class="tag">加价购</span>
+              <em>购满29.90元，可用优惠价换购商品</em>
+              <a href="" class="fr">去凑单 <i class="icon ion-ios-arrow-forward"></i></a></p>
+          </div>
+          <div class="goods-info" ng-repeat="item in goodsChecked">
+            <div class="checkbox-all checkbox-wrap fl">
+              <label class="checkbox"><input type="checkbox" ng-checked="item.checked" ng-click="toggleChecked(item)"></label>
+            </div>
+            <div class="goods-details fl">
+              <a href="" class="goods-link">
+                <div class="goods-img"><img ng-src="{{item.image}}" alt=""></div>
+                <div class="goods-info-sub">
+                  <div class="name">{{item.name}}</div>
+                  <div class="dimension-info">
+                    规格：{{item.dimension}}
+                    <i class="icon ion-ios-arrow-forward fr"></i>
+                  </div>
+                  <p><em class="price">￥{{item.price}}</em><em class="weight">{{item.weight}}</em></p>
+                  <div class="button-group">
+                    <button class="button fl" ng-disabled="item.isDisabled" ng-click="decreaseCount(item)"><i class="icon ion-ios-minus-empty"></i></button>
+                    <input type="text" class="fl" ng-model="item.count">
+                    <button class="button fl" ng-click="addCount(item)"><i class="icon ion-ios-plus-empty"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-wrap">
+        <p class="shouw-more"><i class="icon"></i>你可能还想要</p>
+        <ion-list>
+          <ion-item ng-repeat="item in goodsData" class="padding item-detail">
+            <div class="list-img">
+              <a href=""><img ng-src="{{item.image}}" alt="" class="list-img"></a>
+            </div>
+            <p class="list-info"><a href="">{{item.name}}</a></p>
+            <div>
+              <span class="price">￥<em>{{item.price}}</em> </span>
+              <button class="button button-cart fr button-small" ng-click="addGoods(item)"><i class="icon ion-ios-cart-outline"></i></button>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-content>
+    <div class="bar bar-footer footer-div">
+      <div class="footer-wrap" ng-if="!toEdit">
+        <div class="checkbox-all">
+          <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">全选</label>
+        </div>
+        <div class="account-wrap">
+          <div class="account-label">
+            <h4>总计：<em>￥{{totalValue| number:2}}</em></h4>
+            <p>(不含运费，已优惠￥<em>0.00</em>)</p>
+          </div>
+          <div class="checkout">
+            <button class="button account-btn">去结算<em>({{sum}}件)</em></button></div>
+        </div>
+      </div>
+      <div class="footer-wrap" ng-if="toEdit">
+        <div class="checkbox-all">
+          <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">全选</label>
+        </div>
+        <div class="account-wrap">
+          <div class="checkout">
+            <button class="button button-positive ">分享</button>
+            <button class="button button-dark">移至收藏</button>
+            <button class="button button-energized" ng-click="deleteGood()">删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-pane>
+  <!-- <button ng-click="openPopover($event)">打开浮动框</button>
+  <script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view>
+      <ion-header-bar>
+        <h1 class="title">我的浮动框标题</h1>
+      </ion-header-bar>
+      <ion-content>
+        Hello!
+      </ion-content>
+    </ion-popover-view>
+  </script> -->
+</body>
+
+</html>
