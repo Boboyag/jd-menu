@@ -1,0 +1,415 @@
+/* Empty. Add your own CSS if you like */
+
+/*rewrite  the ionic styles*/
+.item-complex .item-content, .item-radio .item-content {
+    padding: 0;
+}
+
+.pane, .view {
+    background-color: #f4f4f4;
+}
+
+/*common-settings*/
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.lg-icon {
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.button-cart {
+    color: #999;
+    border: 1px solid #999;
+    width: 2rem;
+}
+
+.tag {
+    position: relative;
+    width: 42px;
+    background-color: #e4393c;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 15px;
+    margin-right: 5px;
+}
+
+.tag::before {
+    position: absolute;
+    top: 16px;
+    left: 7px;
+    content: "";
+    border: 4px #e4393c solid;
+    border-left: transparent;
+    border-top: transparent;
+    transform: rotate(-45deg);
+}
+
+.checkbox-all .checkbox {
+    text-align: center;
+    font-size: 12px;
+}
+
+.checkbox-all .checkbox input {
+    margin-left: 5px;
+    width: 16px;
+    height: 16px;
+}
+
+.checkbox-all .checkbox input:checked::before {
+    background-color: #fff;
+    border-color: #333;
+}
+
+.checkbox-all .checkbox input:checked:after {
+    top: 13%;
+    left: 20%;
+}
+
+.checkbox-all .checkbox input:checked::before {
+    background-color: #16c460;
+    border-color: #16c460;
+}
+
+/*colors*/
+.red {
+    color: #ff0000;
+}
+
+.green {
+    color: #16c460;
+}
+
+/*page*/
+.container {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+/*购物车为空*/
+.cart-empty {
+    padding: 10px;
+    background-color: #fff;
+}
+
+.cart-empty p {
+    text-align: center;
+}
+
+.cart-empty p .icon {
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.cart-empty button {
+    width: 46%;
+    margin: 2%;
+    border: 1px solid #ddd;
+}
+
+/*购物车*/
+.cart-wrap {
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 1rem;
+}
+
+.cart-wrap .store-info {
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-wrap .store-info .checkbox {
+    line-height: 2.5;
+    font-size: 1rem;
+}
+
+.cart-wrap .store-info .checkbox input {
+    position: relative;
+    top: 3px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.cart-list {
+    width: 100%;
+}
+
+.cart-list .promotion-info {
+    position: relative;
+    padding-left: 10px;
+}
+
+.cart-list .promotion-info::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 43px;
+    pointer-events: none;
+    background-color: #ddd;
+    height: 1px;
+    right: 0;
+    top: 28px;
+    bottom: 0;
+}
+
+.cart-list .promotion-info p {
+    padding-right: 10px;
+}
+
+.cart-list .goods-info {
+    position: relative;
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-list .goods-info::after {
+    content: "\20";
+    display: block;
+    position: absolute;
+    left: 19px;
+    top: -5px;
+    width: 0;
+    height: 48%;
+    border-left: 1px dotted #aaa;
+}
+
+.cart-list .goods-info .checkbox-wrap {
+    position: relative;
+    width: 10%;
+}
+
+.cart-list .goods-info .checkbox-wrap .checkbox {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.goods-link {
+    display: flex;
+    text-decoration: none;
+    cursor: default;
+}
+
+.goods-link .goods-img {
+    flex: 1;
+    text-align: center;
+}
+
+.goods-link .goods-img img {
+    width: 80%;
+}
+
+.goods-info-sub {
+    flex: 4;
+    margin-right: 10px;
+}
+
+.goods-info-sub .name {
+    display: -webkit-box;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 12px;
+    height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.goods-info-sub .dimension-info {
+    border: 1px solid #ddd;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #333;
+}
+
+.goods-info-sub p {
+    line-height: 2.5;
+    margin-bottom: 0;
+}
+
+.goods-info-sub .price {
+    color: #e4393c;
+    font-size: 14px;
+}
+
+.goods-info-sub .button-group {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 102px;
+}
+
+.goods-info-sub .button-group button {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border: none;
+    border-radius: 0px;
+}
+
+.goods-info-sub .button-group button i {
+    position: relative;
+    top: -5px;
+}
+
+.goods-info-sub .button-group input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+/*shouw-more*/
+.list-wrap {    
+    margin-bottom: 46px;
+    width: 100%;
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+
+.shouw-more {
+    position: relative;
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 3;
+}
+
+.shouw-more::before {
+    position: absolute;
+    content: "";
+    border-top: 1px solid #ddd;
+    width: 38%;
+    top: 1.5rem;
+    left: 0;
+}
+
+.shouw-more::after {
+    position: absolute;
+    content: "";
+    border-top: 1px solid #ddd;
+    width: 38%;
+    top: 1.5rem;
+    right: 0;
+}
+
+.item-detail {
+    margin: 0.5%;
+    width: 49%;
+    float: left;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.item-detail .list-img {
+    width: 100%;
+}
+
+.item-detail .list-info {
+    height: 3em;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: initial;
+}
+
+.item-detail .list-info a {
+    color: #333;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.item-detail .price {
+    line-height: 2;
+    color: #ff0000;
+    font-size: 12px;
+}
+
+.item-detail .price em {
+    font-size: 14px;
+}
+
+.footer-div {
+    padding: 0px;
+}
+
+.footer-div .checkbox-all {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.footer-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.account-wrap {
+    position: absolute;
+    right: 0px;
+    top: 0;
+}
+
+.account-wrap .account-label {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.account-wrap .account-label h4 {
+    margin: 0px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.account-wrap .account-label h4 em {
+    color: #ff0000;
+}
+
+.account-wrap .account-label p {
+    color: #999;
+    font-size: 12px;
+}
+
+.account-wrap .checkout {
+    float: left;
+}
+
+.footer-div .account-wrap .account-btn {
+    padding: 5px 15px;
+    background-color: #e4393c;
+    color: #fff;
+    border-radius: 0px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.footer-div .account-wrap .account-btn:hover {
+    background-color: #e4393c;
+    color: #fff;
+}
+
+.footer-div .account-wrap .account-btn em {
+    font-size: 12px;
+}
